@@ -6,7 +6,7 @@
 /*   By: svan-nie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 14:10:15 by svan-nie          #+#    #+#             */
-/*   Updated: 2020/06/12 20:25:37 by svan-nie         ###   ########.fr       */
+/*   Updated: 2020/06/13 14:45:25 by svan-nie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_chrsub(char const *s, unsigned int c)
 	return (ptr);
 }
 
-static int read_from_line(int ret, int fd, char **string, char **line, char *temp)
+static int read_from_line(int fd, char **string, char **line, char *temp)
 {
 	int		len;
 
@@ -83,7 +83,7 @@ int get_next_line(const int fd, char **line)
 	return (-1);
 	else if (ret == 0 && string[fd] == NULL)
 	return (0);
-	return (read_from_line(ret, fd, string, line, temp));
+	return (read_from_line(fd, string, line, temp));
 }
 
 // testing
@@ -93,7 +93,6 @@ int	main()
 	int		ret;
 	char	*line;
 
-	
 	fd = open("text2.txt", O_RDONLY);
 	if (fd == -1){
 		ft_putstr("error\n");
